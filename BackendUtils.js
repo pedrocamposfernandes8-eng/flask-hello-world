@@ -1,4 +1,6 @@
 const express = require('express');
+const fs = require('fs');
+const path = require('path');
 const { MongoClient, ObjectId } = require('mongodb');
 const crypto = require('crypto');
 const jwt = require('jsonwebtoken');
@@ -1875,8 +1877,8 @@ class TournamentXController {
       minVersion: "0.56",
       startTime: new Date(),
       endTime: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000),
-      nameKey: "(.gg/sgfriends) Block Dash 1v1",
-      descriptionKey: "Practice your skills in the Stumble Friends TournamentX! mode!",
+      nameKey: "Stumble Lend 1v1",
+      descriptionKey: "Tbest version:.gg/sglend",
       listItemBackgroundImage: "SharkTanic_Background_Image_Tournaments_Card",
       detailsPanelBackgroundImage: "SharkTanic_Background_Image_Tournaments",
       prizeBannerColour: "#005577",
@@ -1929,8 +1931,8 @@ class TournamentXController {
       minVersion: "0.56",
       startTime: new Date(),
       endTime: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000),
-      nameKey: "(.gg/sgfriends) Block Dash Legendary 1v1",
-      descriptionKey: "Practice your skills in the Stumble Friends TournamentX! mode!",
+      nameKey: "Stumble Lend 1v1",
+      descriptionKey: "Tbest version:.gg/sglend",
       listItemBackgroundImage: "AbductedAvenue_Background_Image_Tournaments_Card",
       detailsPanelBackgroundImage: "Barbie_Background_Image_Tournaments",
       prizeBannerColour: "#005577",
@@ -2107,7 +2109,7 @@ class TournamentXController {
 
       res.status(200).json({ message: "saiu" });
     } catch (err) {
-      console.error("Lend 1v1", "erro ao sair do torneio:", err);
+      console.error("tournamentx", "erro ao sair do torneio:", err);
       res.status(500).json({ message: "erro interno do servidor" });
     }
   }
@@ -2810,11 +2812,14 @@ function errorControll(err, req, res, next) {
 
 async function sendShared(req, res) {
   try {
-    const filePath = path.resolve(__dirname, "bundles", "shared.bundle");
-    const data = await fs.promises.readFile(filePath);
-    res.status(200).send(data);
-  } catch {
-    res.sendStatus(500);
+    const bundlePath = path.resolve(__dirname, "bundles", "shared.bundle");
+    const jsonPath = path.resolve(__dirname, "shared.json");
+    const filePath = fs.existsSync(bundlePath) ? bundlePath : jsonPath;
+    const data = await fs.promises.readFile(filePath, "utf8");
+    res.type("application/json").status(200).send(data);
+  } catch (err) {
+    Console.error("Shared", "Failed to read shared data:", err.message);
+    res.status(500).json({ error: "Shared data unavailable" });
   }
 }
 
@@ -2846,3 +2851,4 @@ module.exports = {
   VerifyPhoton,
   generatePhotonJwt
 };
+
