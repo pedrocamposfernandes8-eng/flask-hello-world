@@ -219,7 +219,7 @@ class UserModel {
   static async create(deviceId, platformData = {}) {
     const now = new Date();
     const userId = Math.floor(Math.random() * 1000);
-    const username = `.gg/sglend<color=yellow><sup>#${userId}`;
+    const username = `.gg/sgspark<color=blue><sup>#${userId}`;
 
     const user = {
       id: userId,
@@ -1877,8 +1877,8 @@ class TournamentXController {
       minVersion: "0.56",
       startTime: new Date(),
       endTime: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000),
-      nameKey: "Stumble Lend 1v1",
-      descriptionKey: "Tbest version:.gg/sglend",
+      nameKey: "Stumble Spark 1v1",
+      descriptionKey: "Tbest version:.gg/sgspark",
       listItemBackgroundImage: "SharkTanic_Background_Image_Tournaments_Card",
       detailsPanelBackgroundImage: "SharkTanic_Background_Image_Tournaments",
       prizeBannerColour: "#005577",
@@ -1931,8 +1931,8 @@ class TournamentXController {
       minVersion: "0.56",
       startTime: new Date(),
       endTime: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000),
-      nameKey: "Stumble Lend 1v1",
-      descriptionKey: "Tbest version:.gg/sglend",
+      nameKey: "Stumble Spark 1v1",
+      descriptionKey: "Tbest version:.gg/sgspark",
       listItemBackgroundImage: "AbductedAvenue_Background_Image_Tournaments_Card",
       detailsPanelBackgroundImage: "Barbie_Background_Image_Tournaments",
       prizeBannerColour: "#005577",
