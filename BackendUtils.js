@@ -707,7 +707,7 @@ class UserController {
       const config = {
         _SharedVersion: 2,
         Versions: {
-          AndroidLastVersionAvailable: 0.59
+          AndroidLastVersionAvailable: 0.64
         },
         BattlePassRotation: SharedData.BattlePassRotation || [],
         BattlePassesV3: SharedData.BattlePasses || [],
